@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои покупки</title>
+       <link rel="stylesheet" href="../css/index.css">
+        <script defer src="../js/index.js"></script>
+</head>
+<body>
+    {{#if items}}
+    {{#each items}}
+        {{#with .}}
+                <div class="item-container user">
+                    <img class="item-img" src="../uploads/{{image}}">
+                    <p class="price">{{price}} руб</p>
+                    <p class="retailer">{{retailer}}</p>
+                    <p class="itemName">{{itemName}}</p>
+                    <div class="cont">
+                        <p class="rating">{{rating}}👍</p>
+                        <p class="sales">{{sales}}🛒</p>
+                    </div>
+                    {{#if isComplained}}
+                        <p>Мы отправили вашу жалобу на рассмотрение модераторам!</p>
+                    {{/if}}
+                    {{#unless isComplained}}
+                        <p onclick="complain('{{retailer}}', {{id}})">Пожаловаться на продавца 🚩</p>
+                    {{/unless}}
+                      <div class="rating">
+                    {{#if isRated}}
+                        <button class="button-rating" onclick="deleteRating({{id}})">Отменить оценку</button>
+                    {{/if}}
+                    {{#unless isRated}}
+                        <button class="button-rating" onclick="setRating({{id}})">Нравится товар</button>
+                    {{/unless}}
+                    </div>
+                    <div class="review">
+                    {{#if isReviewed}}
+                        <button class="button-review">Отзыв сохранен</button>
+                    {{/if}}
+                    {{#unless isReviewed}}
+                        <input type="text" id="review{{id}}" placeholder="Написать отзыв">
+                        <button class="button-review" onclick="writeReview({{id}})">Отправить</button>    
+                    {{/unless}}
+                    </div>
+                </div>
+            {{/with}}
+    {{/each}}
+    {{/if}}
+    {{#unless items}}
+    <img class="empty-purchases-img" src="https://shop.delo.su/images/stories/empty-cart.jpg">
+    <p class="empty-purchases">Вам еще предстоит совершить ваши покупки!</p>
+    {{/unless}}
+    <button class="main-page purchases"onclick="backToMainPage()">На главную</button>
+</body>
+</html>

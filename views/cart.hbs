@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+     <link rel="stylesheet" href="../css/index.css">
+     <script defer src="../js/index.js"></script>
+</head>
+<body>
+    <div class="items_container">
+    {{#each cart_items}}
+        {{#with .}}
+                <div class="item-container cart-page">
+                    <img class="item-img" src="../uploads/{{image}}">
+                    <p class="price">{{price}} руб</p>
+                    <p class="retailer">{{retailer}}</p>
+                    <p class="itemName">{{itemName}}</p>
+                    <div class="cont">
+                        <p class="rating">{{rating}}👍</p>
+                        <p class="reviews" onclick="showReviews({{id}})">{{numOfReviews}}📝</p>
+                        <p class="sales">{{sales}}🛒</p>
+                    </div>
+                    <button class="button-cart" onclick="payForItem({{id}})">Оплатить</button>
+                    <button class="button-cart" onclick="deleteFromCart({{id}})">Удалить из корзины</button>
+                </div>
+        {{/with}}
+    {{/each}}
+    {{#unless cart_items}}
+        <div class="container-empty">
+            <img class="empty-cart-img" src="https://olsi-trade.ru/local/templates/olsi/img/icon/empty-basket.svg">
+            <p class="empty-cart">Корзина пуста</p>
+        </div>
+    {{/unless}}
+    </div>
+    <button id="back-to-main" onclick="backToMainPage()">На главную</button>
+</body>
+</html>

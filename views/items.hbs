@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping house</title>
+    <link rel="stylesheet" href="./css/index.css">
+     <script defer src="../js/index.js"></script>
+    <script defer src="../js/style.js"></script>
+</head>
+<body>
+    <div class="menu">
+        <button class="cart" onclick="toCart()">Корзина</button>
+        <button onclick="enableAuthorization()" class="profile">Профиль</button>
+        <div id="myProfile" class="profile-content">
+                <a href="./html/sign-up.html">Регистрация</a>
+                <a href="./html/sign-in.html">Вход</a>
+                 <a href="/user/personal-cabinet">Личный кабинет</a>
+        </div>
+        <select onchange="filterItems()" ondblclick="resetFilters()" id="filters">
+            <option value="">Категория</option>
+            <option value="accessories">Аксессуары</option>
+            <option value="clothes">Одежда</option>
+            <option value="cosmetics">Косметика</option>
+            <option value="gifts">Подарки</option>
+            <option value="stationery">Канцелярия</option>
+        </select>
+        <input type="text" id="search" placeholder="поиск 🔍︎">
+        {{#if currentUser.login}}
+            <button class="exit" onclick="signOut()">Выйти</button>
+        {{/if}}
+</div>
+    <div class="items-container">
+        {{#each items}}
+            {{#with .}}
+                <div class="item-container">
+                    <img class="item-img" src="../uploads/{{itemImg}}">
+                    <p class="price">{{price}} руб</p>
+                    <p class="retailer">{{retailer}}</p>
+                    <p class="itemName">{{itemName}}</p>
+                    <div class="cont">
+                        <p class="rating">{{rating}}👍</p>
+                        <p class="reviews" onclick="showReviews({{id}})">{{numOfReviews}}📝</p>
+                        <p class="sales">{{sales}}🛒</p>
+                    </div>
+                    <button class="button-cart" onclick="addToCart({{id}})">В корзину</button>
+                </div>
+            {{/with}}
+        {{/each}}
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор товара</title>
+    <link rel="stylesheet" href="../css/index_auth.css">
+    <script defer src="../js/index.js"></script>
+    <script defer src="../js/style.js"></script>
+</head>
+<body>
+    <div class="container add">
+        <form id="form-item" action="/retailer/add/item" method="POST" enctype="multipart/form-data">
+        <div class="cont1">
+            <img id="itemImage" class="imageSignUp" alt="Avatar" src="https://img.freepik.com/premium-vector/shopping-trolley-logo-and-vector-template_658089-5994.jpg"/>
+            <input
+            id="itemSelect"
+            type="file"
+            onchange="itemChange()"
+            name="itemImgName"
+            class="disable"
+            accept="image/*"/>
+        </div>
+        
+        <input type="text" id="itemName" placeholder="Наименование товара:" name="name" required>
+        <input type="text" id="itemPrice" placeholder="Цена товара, бел. рубли:" name="price" required>
+        <select id="category" name="category" required>
+            <option value="">Выберите категорию</option>
+            <option value="accessories">Аксессуары</option>
+            <option value="cosmetics">Косметика</option>
+            <option value="clothes">Одежда</option>
+            <option value="stationery">Канцелярия</option>
+            <option value="gifts">Подарки</option>
+        </select>
+        <button id="add-item" onclick="addItem()">Добавить</button>
+        </form>
+    </div>
+</body>
+</html>

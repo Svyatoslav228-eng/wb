@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal cabinet</title>
+    <link rel="stylesheet" href="../css/index_personal.css">
+    <script defer src="../js/index.js"></script>
+</head>
+<body>
+    <div class="personal-cabinet">
+        {{#if currentUser}}
+                {{#if currentUser.image}}
+                    <img id="user-image" src="../uploads/{{currentUser.image}}">
+                {{/if}}
+                {{#unless currentUser.image}}
+                    <img id="user-image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                {{/unless}}
+                <p>{{currentUser.login}}</p>
+        {{/if}}
+        {{#unless currentUser}}
+            <p>Упс... Нужно зарегистрироваться!</p>
+        {{/unless}}
+        {{#if currentUser.retail}}
+            <button><a href="/html/add-item.html">Добавить товар</a></button>
+            <button onclick="itemModify()">Ваши товары</button>
+        {{/if}}
+        {{#if currentUser.moderate}}
+            <button onclick="userModify()">Работа с пользователями</button>
+        {{/if}}
+        {{#if currentUser.shop}}
+            <button onclick="viewListOfPurchases()">Мои покупки</button>
+        {{/if}}
+        <button onclick="backToMainPage()">На главную</button>
+    </div>
+</body>
+</html>

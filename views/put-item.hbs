@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор товаров</title>
+    <script defer src="../js/index.js"></script>
+     <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="items_container">
+    {{#each items}}
+        {{#with .}}
+                <div class="item-container put-page">
+                    <img class="item-img" src="../uploads/{{image}}">
+                    <input type="text" class="price{{id}}" value="{{price}}"></input>руб
+                    <p class="retailer">{{retailer}}</p>
+                    <p class="itemName">{{itemName}}</p>
+                    <div class="cont">
+                        <p class="rating">{{rating}}👍</p>
+                        <p class="reviews" onclick="showReviews({{id}})">{{numOfReviews}}📝</p>
+                        <p class="sales">{{sales}}🛒</p>
+                    </div>
+                    <button class="button-cart" onclick="changeItem({{id}})">Изменить</button>
+                    <button class="button-cart" onclick="deleteItem({{id}})">Удалить</button>
+                </div>
+        {{/with}}
+    {{/each}}
+    {{#unless items}}
+    <div class="empty-cont">
+        <img class="empty_img" src="https://oir.mobi/uploads/posts/2022-09/1662141991_29-oir-mobi-p-grustnie-koti-vkontakte-52.jpg">
+        <p class = "empty">Список товаров пуст</p>
+    </div>
+    {{/unless}}
+    </div>
+    <button class="main-page put" onclick="backToMainPage()">На главную</button>
+</body>
+</html>

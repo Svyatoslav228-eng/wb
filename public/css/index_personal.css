@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    background-color: #ba66ff;
+}
+
+.personal-cabinet{
+    border-radius: 20%;
+    background-color: white;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5% auto;
+    align-items: center;
+    min-height: 30vw;
+}
+#user-image{
+    width: 20vw;
+    height: 20vw;
+    border-radius: 100%;
+    margin: 2% auto;
+    object-fit: cover;
+}
+.personal-cabinet>button{
+    background-color: #ba66ff;
+    color: white;
+    width: 20%;
+    margin: 2% auto;
+    border: none;
+
+}
+.personal-cabinet>button>a{
+    text-decoration: none;
+    color: white;
+}
